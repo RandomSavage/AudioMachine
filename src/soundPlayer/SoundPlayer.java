@@ -37,6 +37,7 @@ public class SoundPlayer {
 			}
 		}
 		System.out.println(" Exited Player");
+		scanner.close();
 	}
 
 }
