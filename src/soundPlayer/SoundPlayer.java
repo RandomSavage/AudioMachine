@@ -11,33 +11,37 @@ public class SoundPlayer {
 		
 		Scanner scanner = new Scanner(System.in);
 
-		File file = new File("conan_best_in_life.wav");
-		AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-		Clip clip = AudioSystem.getClip();
-		clip.open(audioStream);
-		
-		String response = "";
-		
-		
-		while(!response.equals("Q")) {
-			System.out.println("P = play, S = stop, R = reset, Q = quit");
-			System.out.print("Enter your Choice ");
-			response = scanner.next();
-			response = response.toUpperCase();
-			switch(response ) {
-			case("P"): clip.start();
-			break;
-			case("S"): clip.stop();
-			break;
-			case("R"): clip.setMicrosecondPosition(0);
-			break;
-			case("Q"): clip.close();
-			break;
-			default: System.out.println("Not a Valid Choice!");
+		File file = new File("");
+		String[] waves = {"life_moves_fast.wav", "conan_best_in_life.wav"};
+		for(String wave: waves) {
+			file = new File(wave);
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioStream);
+			
+			String response = "";
+			
+			
+			while(!response.equals("Q")) {
+				System.out.println("P = play, S = stop, R = reset, Q = quit");
+				System.out.print("Enter your Choice ");
+				response = scanner.next();
+				response = response.toUpperCase();
+				switch(response ) {
+				case("P"): clip.start();
+				break;
+				case("S"): clip.stop();
+				break;
+				case("R"): clip.setMicrosecondPosition(0);
+				break;
+				case("Q"): clip.close();
+				break;
+				default: System.out.println("Not a Valid Choice!");
+				}
 			}
+			System.out.println(" Exited Player");
+//			scanner.close();
 		}
-		System.out.println(" Exited Player");
-		scanner.close();
 	}
 
 }
